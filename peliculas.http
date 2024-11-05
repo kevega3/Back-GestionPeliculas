@@ -1,0 +1,6 @@
+@peliculas_HostAddress = http://localhost:5051
+
+GET {{peliculas_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
