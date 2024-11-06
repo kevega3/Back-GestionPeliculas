@@ -8,6 +8,9 @@ namespace peliculas.Controllers
     public class PeliculaController : ControllerBase // Fixed typo in class name
     {
         private readonly PeliculasDbContext context;
+
+        public object Usuario { get; internal set; }
+
         public PeliculaController(PeliculasDbContext context)
         {
             this.context = context;
@@ -69,6 +72,37 @@ namespace peliculas.Controllers
             {
                 return BadRequest(ex.Message);
             }
+
         }
+
+        [Route("[action]/{estrellas}")]
+        [HttpGet("GetDestacas")]
+        public ActionResult GetDestacas(int estrellas)
+        {
+            try
+            {
+                return Ok(context.Pelicula.Select(p =>
+                    new
+                    {
+                        p.idPelicula,
+                        p.Titulo,
+                        p.Anio,
+                        p.Duracion,
+                        p.Genero,
+                        p.Director,
+                        p.Actores,
+                        p.Sinopsis,
+                        p.Portada,
+                        p.Estrellas,
+                        p.Precio
+                    }).Where(p => p.Estrellas >= estrellas));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

@@ -14,6 +14,7 @@ namespace peliculas.Models
         public string Actores { get; set; } = string.Empty;
         public string Sinopsis { get; set; } = string.Empty;
         public string Portada { get; set; } = string.Empty;
+        
         public byte Estrellas { get; set; }
         public decimal Precio { get; set; }
     }

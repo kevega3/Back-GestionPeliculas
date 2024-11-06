@@ -10,8 +10,7 @@ namespace peliculas.Context
 
         }
         public DbSet<Pelicula> Pelicula { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
-
-        //public DbSet<Pelicula> Peliculas { get; set; }
     }
 }
