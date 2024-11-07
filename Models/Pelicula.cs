@@ -17,5 +17,9 @@ namespace peliculas.Models
         
         public byte Estrellas { get; set; }
         public decimal Precio { get; set; }
+        public List<Favorito>? Favorito { get; set; }
+        public List<Carrito>? Carito { get; set; }
+
+
     }
 }

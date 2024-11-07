@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using peliculas.Context;
+using peliculas.Models;
 
 namespace peliculas.Controllers
 {
@@ -33,7 +34,9 @@ namespace peliculas.Controllers
                     P.Sinopsis,
                     P.Portada,
                     P.Estrellas,
-                    P.Precio
+                    P.Precio,
+                    Favorito = P.Favorito.Select(fa => new { fa.idPelicula, fa.idUsuario })
+                    
                 }).ToList());
             }
             catch (System.Exception ex)
@@ -94,7 +97,8 @@ namespace peliculas.Controllers
                         p.Sinopsis,
                         p.Portada,
                         p.Estrellas,
-                        p.Precio
+                        p.Precio,
+                        Favorito = p.Favorito.Select(fa => new { fa.idPelicula, fa.idUsuario })
                     }).Where(p => p.Estrellas >= estrellas));
 
             }
